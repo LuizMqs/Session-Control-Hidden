@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="http://localhost:8000/login" method="post">
+        <label for="name">Insert user name: </label>
+        <input type="text" name="name" />
+        <label for="password">Insert password: </label>
+        <input type="password" name="password" />
+        <input name="token" value="token:gnda1sj412kgb532dw4jf4a2qk421513dp2nmb" hidden />
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        try {
+            fetch('http://localhost:8000/home/', { method: 'GET' })
+                .then(response => response.url)
+                .then(data => {
+                    if (data != "http://localhost:3000/login/")
+                        window.location = data;
+                })
+
+                .catch(function (error) {
+                    console.log('Request failed', error);
+                });
+        } catch (e) {
+            console.log(e);
+        }
+    </script>
+</body>
+
+</html>
